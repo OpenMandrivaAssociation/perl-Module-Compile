@@ -16,6 +16,7 @@ Buildrequires:	perl-devel
 %endif
 Buildrequires:  perl(Digest::SHA1)
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This module provides a system for writing modules that compile other Perl

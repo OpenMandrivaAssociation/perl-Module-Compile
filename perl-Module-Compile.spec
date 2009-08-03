@@ -1,22 +1,22 @@
-%define module	Module-Compile
-%define name	perl-%{module}
-%define version 0.20
-%define	release	%mkrel 5
+%define upstream_name	 Module-Compile
+%define upstream_version 0.20
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Perl Module Compilation
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/Module/%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Module/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 Buildrequires:	perl-devel
 %endif
 Buildrequires:  perl(Digest::SHA1)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module provides a system for writing modules that compile other Perl
@@ -24,7 +24,7 @@ modules. Modules that use these compilation modules get compiled into some
 altered form the first time they are run. The result is cached into .pmc files.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 # upstream packaging bug
 rm -f lib/Module/._Compile.pm
 
@@ -47,5 +47,3 @@ rm -rf %{buildroot}
 %doc DESIGN Changes
 %{perl_vendorlib}/Module
 %{_mandir}/*/*
-
-

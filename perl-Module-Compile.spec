@@ -1,15 +1,13 @@
 %define upstream_name	 Module-Compile
-%define upstream_version 0.38
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	0.38
+Release:	2
 
 Summary:	Perl Module Compilation
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://github.com/ingydotnet/module-compile-pm
-Source0:	https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Compile-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/I/IN/INGY/Module-Compile-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -22,7 +20,7 @@ modules. Modules that use these compilation modules get compiled into some
 altered form the first time they are run. The result is cached into .pmc files.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 # upstream packaging bug
 rm -f lib/Module/._Compile.pm
 
@@ -52,9 +50,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 * Mon Aug 03 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.200.0-1mdv2011.0
 + Revision: 407805
-- rebuild using %%perl_convert_version
-
-* Thu Jul 31 2008 Thierry Vignaud <tv@mandriva.org> 0.20-5mdv2009.0
+- rebuild using %0.38 Thu Jul 31 2008 Thierry Vignaud <tv@mandriva.org> 0.20-5mdv2009.0
 + Revision: 257852
 - rebuild
 
